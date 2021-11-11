@@ -71,7 +71,6 @@
         <!-- Checks for blocks. You know, those {}'s         -->
         <!-- See http://checkstyle.sf.net/config_blocks.html -->
         <module name="AvoidNestedBlocks"/>
-        <module name="EmptyBlock"/>
         <module name="LeftCurly"/>
         <module name="NeedBraces"/>
         <module name="RightCurly"/>
@@ -102,6 +101,10 @@
         <!--<module name="FinalParameters"/>-->
         <module name="TodoComment"/>
         <module name="UpperEll"/>
+        <module name="EmptyBlock"/>
+        <module name="EmptyBlock">
+            <property name="tokens" value="LITERAL_CATCH"/>
+        </module>
     </module>
 
 </module>
