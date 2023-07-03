@@ -30,14 +30,22 @@ public class PoohServer {
                             var name = details[1];
                             var text = details[2];
                             if (action.startsWith("intro")) {
-                                if (name.equals("consumer")) {
+                                if (name.equals("queue")) {
                                     queueSchema.addReceiver(
                                             new SocketReceiver(text, new PrintWriter(out))
                                     );
                                 }
+                                if (name.equals("topic")) {
+                                    topicSchema.addReceiver(
+                                            new SocketReceiver(text, new PrintWriter(out))
+                                    );
+                                }
                             }
-                            if (action.startsWith("message")) {
+                            if (action.startsWith("queue")) {
                                 queueSchema.publish(new Message(name, text));
+                            }
+                            if (action.startsWith("topic")) {
+                                topicSchema.publish(new Message(name, text));
                             }
                         }
                     } catch (Exception e) {
